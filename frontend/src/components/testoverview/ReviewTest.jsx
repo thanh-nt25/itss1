@@ -26,7 +26,7 @@ const ReviewTest = ({ test }) => {
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-left text-3xl font-bold text-blue-800">{test.title}</h1>
         <div className="text-right text-xl font-semibold text-red-600">
-          {test.timeLeft || "--:--:--"}
+          00:00:00
         </div>
       </div>
 

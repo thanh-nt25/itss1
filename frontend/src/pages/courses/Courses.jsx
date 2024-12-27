@@ -2,17 +2,35 @@ import React, { useState, useEffect } from "react";
 import "./courses.css";
 import { CourseData } from "../../context/CourseContext";
 import CourseCard from "../../components/coursecard/CourseCard";
+import { useSearch } from "@/context/SearchContext";
 
 const Courses = () => {
+  const { searchTerm } = useSearch();
   const { courses } = CourseData();
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const coursesPerPage = 10; // Set to 10 cards per page
 
+  // useEffect(() => {
+  //   setFilteredCourses(courses || []);
+  // }, [courses]);
+
   useEffect(() => {
-    setFilteredCourses(courses || []);
-  }, [courses]);
+    // Xử lý cả searchTerm và category
+    const normalizedSearchTerm = searchTerm ? searchTerm.toLowerCase() : "";
+    console.log("serch term effect", searchTerm);
+    
+    const filtered = courses.filter((course) => {
+      const matchesSearch = course?.title?.toLowerCase().includes(normalizedSearchTerm);
+      const matchesCategory =
+        selectedCategories.length === 0 || selectedCategories.includes(course.category);
+      return matchesSearch && matchesCategory;
+    });
+    console.log("filtered", filtered);
+    
+    setFilteredCourses(filtered);
+  }, [searchTerm, selectedCategories, courses]);
 
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;

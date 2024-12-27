@@ -6,6 +6,7 @@ import "./auth.css";
 // import { Link, useNavigate } from "react-router-dom";
 import { UserData } from "../../context/UserContext";
 import { CourseData } from "../../context/CourseContext";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const Login = () => {
       await loginUser(email, password, navigate, fetchMyCourse);
     };
   return (
-    <div className="auth-page flex flex-col justify-center items-center min-h-screen bg-gray-100 mb-20">
+    <div className="mt-10 auth-page flex flex-col justify-center items-center min-h-screen bg-gray-100 mb-20">
       <div className="flex flex-col">
 
           <h2 className="h2 text-2xl font-bold mb-6 text-center">HouRenShuu</h2>
@@ -59,7 +60,7 @@ const Login = () => {
           {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              メール:
+              メール (accout below):
             </label>
             <input
               type="email"
@@ -142,7 +143,39 @@ const Login = () => {
               <span className="text-red-500 font-bold">G</span>
               <span>Google</span>
             </button>
+            
           </div>
+          {/* display user */}
+          <TableContainer className="mt-5" component={Paper}>
+            <Table sx={{
+                minWidth: 300,
+                "& .MuiTableCell-root": {
+                  border: "1px solid #ddd", // Đường viền giữa các ô
+                },
+              }}
+            >
+              <TableHead>
+                <TableRow>
+                  <TableCell></TableCell>
+                  <TableCell>email</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <TableRow>
+                  <TableCell>user</TableCell>
+                  <TableCell>user@gmail.com</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>admin</TableCell>
+                  <TableCell>admin@gmail.com</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>pass</TableCell>
+                  <TableCell>123456</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>
         </div>
       </div>
     </div>

@@ -671,6 +671,7 @@ const test2 ={
 
 const Tested = ({testNum = "test1"}) => {
   const location = useLocation();
+  // const navigate = useNavigate();
   const isAdminRoute = location.pathname.startsWith("/admin");
   const [lectures, setLectures] = useState([]);
   const [lecture, setLecture] = useState({});
@@ -717,6 +718,10 @@ const Tested = ({testNum = "test1"}) => {
     setIsStart(true);
   }
 
+  const handleBack = () => {
+    navigate(-1); // Quay lại trang trước
+  };
+
   const navigateLecture = (direction) => {
     const currentIndex = lectures.findIndex((lec) => lec._id === lecture._id);
     const nextIndex =
@@ -732,7 +737,6 @@ const Tested = ({testNum = "test1"}) => {
   
   return (
     <div className="">
-      
       {
         loading ? (<Loading />) :(
           isEnd ? <TestResult/> :
@@ -740,30 +744,29 @@ const Tested = ({testNum = "test1"}) => {
           {
             isReview ? <ReviewTest test = {test.test1}/> : <TestOverview test = {test1}/> 
           }
-          
-            
-            <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-10">
+          {isReview ? (
+              <button
+              onClick={handleBack}
+              className="px-8 mb-5 py-3 bg-blue-500 text-white text-lg font-semibold rounded-lg hover:bg-blue-600 shadow-md transition-all duration-200"
+            >
+              コースに戻る
+            </button>
+            ) : (
               <button
                 onClick={handleReview}
                 className="px-8 mb-5 py-3 bg-blue-500 text-white text-lg font-semibold rounded-lg hover:bg-blue-600"
-                >
+              >
                 レビュー
               </button>
+            )}
             </div>
             
-            
-          
-          
         </>
         )
-        
       }
     </div>
-  
-   
   )}
-
-
 
 export default Tested;
 {/* <TestOverview test = {test1}/> */}

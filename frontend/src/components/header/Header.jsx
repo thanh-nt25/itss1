@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import "./header.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation  } from "react-router-dom";
 import { FaBell, FaChevronDown } from "react-icons/fa"; 
-// import { UserData } from "./context/UserContext";
+import toast from "react-hot-toast"
+import { useSearch } from "@/context/SearchContext";
 
 const Header = ({ isAuth, user, handleLogout }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const { searchTerm, setSearchTerm } = useSearch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const navigate = useNavigate();
-  // const { isAuth, user, loading, setIsAuth, setUser } = UserData();
+  const location = useLocation();
 
   const handleSearch = () => {
-    console.log("Search term:", searchTerm);
+    console.log("Search term in header:", searchTerm);
+
+    if (location.pathname !== "/courses") {
+      toast.error("コースページで検索してください");
+      navigate("/courses");
+    } 
+
   };
 
   const toggleDropdown = () => {
@@ -20,7 +27,6 @@ const Header = ({ isAuth, user, handleLogout }) => {
 
   return (
     <header>
-      {/* Logo được bọc bởi Link */}
       
       
       {
@@ -42,6 +48,11 @@ const Header = ({ isAuth, user, handleLogout }) => {
           placeholder="コースを検索..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch(); 
+            }
+          }}
         />
         <button onClick={handleSearch}>検索</button>
       </div>

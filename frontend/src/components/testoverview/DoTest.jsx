@@ -38,8 +38,8 @@ const Dotest = ({ test, isStarted }) => {
   };
 
   const handleSubmitTest = () => {
-    console.log("Test submitted with answers", answers);
-    navigate("/test-result");
+    // console.log("Test submitted with answers", answers);
+    // navigate("/test-result");
   };
 
   useEffect(() => {
