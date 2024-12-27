@@ -29,6 +29,7 @@ import AdminUsers from "./admin/Users/AdminUsers";
 import ForgotPassword from "./pages/auth/ForgotPassword";
 import ResetPassword from "./pages/auth/ResetPassword";
 import Tabs from "./components/tabs/Tabs";
+import { sample_course_id } from "@/main"
 
 // import { useUserContext } from "./context/UserContext.jsx"; 
 
@@ -41,6 +42,7 @@ const App = () => {
   //   setIsAuth(false);
   //   localStorage.removeItem("token");
   // };
+  
 
   const handleLogout = () => {
     localStorage.clear();
@@ -104,7 +106,7 @@ const App = () => {
             />
 
             <Route
-              path="/course/676cc96539a994da77bac09b/tested"
+              path={`/course/${sample_course_id}/tested`}
               element={isAuth ? <Tested user={user} /> : <Login />}
             />
 

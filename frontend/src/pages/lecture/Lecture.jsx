@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { TiTick } from "react-icons/ti";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import axiosInstance from "@/api/axiosInstance";
+import { sample_course_id } from "@/main"
 
 const Lecture = ({ user }) => {
   const location = useLocation();
@@ -27,7 +28,7 @@ const Lecture = ({ user }) => {
 
   async function fetchLectures() {
     try {
-      const { data } = await axiosInstance.get(`/api/lectures/${"676cc96539a994da77bac09b"}`);
+      const { data } = await axiosInstance.get(`/api/lectures/${sample_course_id}`);
       setLectures(data.lectures);
       setLoading(false);
       // console.log(data.lectures.length);

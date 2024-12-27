@@ -10,6 +10,7 @@ import TestOverview from "../../components/testoverview/TestOverview"
 import DoTest from "../../components/testoverview/DoTest"
 import TestResult from "../../components/testoverview/TestResult"
 import axiosInstance from "@/api/axiosInstance";
+import { sample_course_id } from "@/main"
 
 const test = {
   "test1": {
@@ -687,7 +688,7 @@ const Tests = ({testNum = "test1"}) => {
 
   async function fetchLectures() {
     try {
-      const { data } = await axiosInstance.get(`/api/lectures/${"676cc96539a994da77bac09b"}`);
+      const { data } = await axiosInstance.get(`/api/lectures/${sample_course_id}`);
       setLectures(data.lectures);
       setLoading(false);
       

@@ -90,7 +90,7 @@ export const UserContextProvider = ({ children }) => {
           token: localStorage.getItem('token'),
         },
       });
-      console.log("data from local", data);
+      // console.log("data from local", data);
       
       setUser(data.user);
       setIsAuth(true);
@@ -107,7 +107,7 @@ export const UserContextProvider = ({ children }) => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      console.log("user effect token: ", token);
+      // console.log("user effect token: ", token);
       
       fetchUser();
     } else {

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { sample_course_id } from "@/main"
 
 const TestResult = ({ testName="日本語１", score="0", totalQuestions="20", remainingTime="0" }) => {
   const navigate = useNavigate();
@@ -26,8 +27,8 @@ const TestResult = ({ testName="日本語１", score="0", totalQuestions="20", r
       <div className="flex justify-center">
         <button
         
-        //   onClick={() => navigate(`/course/676cc96539a994da77bac09b/`)}
-          onClick={() => navigate(`/course/676cc96539a994da77bac09b/tested`)}
+        //   onClick={() => navigate(`/course/${sample_course_id}/`)}
+          onClick={() => navigate(`/course/${sample_course_id}/tested`)}
           className="px-6 py-3 border-2 border-blue-500 text-blue-500 text-lg font-semibold rounded-lg hover:bg-blue-500 hover:text-white"
         >
           回答を確認する

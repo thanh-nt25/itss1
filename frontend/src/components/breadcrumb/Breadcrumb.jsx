@@ -1,22 +1,20 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { sample_course_id } from "@/main"
 
 const Breadcrumb = () => {
   const location = useLocation();
 
-  // Tách các phần tử từ URL
   const pathnames = location.pathname.split("/").filter((x) => x);
-
-  // Mapping từ URL path sang tên hiển thị
   const routeMap = {
-    admin: "ホーム", // Thay thế "admin" bằng "ホーム"
+    admin: "ホーム", 
     course: "コース管理",
     users: "ユーザー",
     dashboard: "ダッシュボード",
     "course-details": "コース名",
     "add-exercises": "問題追加",
     "add-documents": "資料追加",
-    "676cc96539a994da77bac09b": "コース名",
+    sample_course_id: "コース名",
     "tests": "テスト名"
   };
 

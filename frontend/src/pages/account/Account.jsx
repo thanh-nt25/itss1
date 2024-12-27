@@ -1,6 +1,7 @@
 import React from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { sample_course_id } from "@/main"
 
 const Account = ({ user }) => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Account = ({ user }) => {
       <div className="flex-2 w-[500px] bg-white shadow-md rounded-lg p-6">
         <h2 className="text-lg font-semibold text-gray-700 mb-4">コース進捗</h2>
         {[...Array(4)].map((_, index) => (
-          <div key={index} className="mb-8 cursor-pointer" onClick={() => navigate(`/lectures/${"676cc96539a994da77bac09b"}`)}>
+          <div key={index} className="mb-8 cursor-pointer" onClick={() => navigate(`/lectures/${sample_course_id}`)}>
             <h3 className="text-gray-600">日本語{index + 1}</h3>
             <div className="w-full bg-gray-300 rounded h-7">
               <div

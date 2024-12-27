@@ -8,6 +8,7 @@ import courseImageCulture from "./Culture.jpg";
 import courseImageVietnamese from "./vietnamese.jpg";
 import { useLocation } from "react-router-dom";
 import axiosInstance from "@/api/axiosInstance";
+import { sample_course_id } from "@/main"
 
 const CourseCard = ({ course }) => {
   const categoryImages = {
