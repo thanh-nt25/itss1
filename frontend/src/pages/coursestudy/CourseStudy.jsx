@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { CourseData } from "../../context/CourseContext";
-import { server } from "../../main";
 import courseImageJapanese from "./assets/japan-course.png";
 import courseImageCulture from "./assets/Culture.jpg";
 import courseImageVietnamese from "./assets/vietnamese.jpg";
@@ -12,6 +11,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt, faCheck, faLock } from "@fortawesome/free-solid-svg-icons";
 import {Button} from "@mui/material";
+import axiosInstance from "@/api/axiosInstance";
 
 const CourseStudy = ({ user }) => {
   const [lectures, setLectures] = useState([]);
@@ -30,7 +30,7 @@ const CourseStudy = ({ user }) => {
 
   async function fetchLectures() {
     try {
-      const { data } = await axios.get(`${server}/api/lectures/${params.id}`);
+      const { data } = await axiosInstance.get(`/api/lectures/${params.id}`);
       setLectures(data.lectures);
       setLoading(false);
     } catch (error) {
@@ -41,7 +41,7 @@ const CourseStudy = ({ user }) => {
 
   async function fetchProgress() {
     try {
-      const { data } = await axios.get(`${server}/api/user/progress?course=${params.id}`);
+      const { data } = await axiosInstance.get(`/api/user/progress?course=${params.id}`);
       setCompletedLectures(data.completedLectures);
       setProgress(data.progress);
     } catch (error) {

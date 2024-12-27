@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 // import "./lecture.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
-import { server } from "../../main";
 import Loading from "../../components/loading/Loading";
 import toast from "react-hot-toast";
 import { TiTick } from "react-icons/ti";
@@ -10,6 +9,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import TestOverview from "../../components/testoverview/TestOverview"
 import DoTest from "../../components/testoverview/DoTest"
 import TestResult from "../../components/testoverview/TestResult"
+import axiosInstance from "@/api/axiosInstance";
 
 const test = {
   "test1": {
@@ -687,7 +687,7 @@ const Tests = ({testNum = "test1"}) => {
 
   async function fetchLectures() {
     try {
-      const { data } = await axios.get(`${server}/api/lectures/${"676cc96539a994da77bac09b"}`);
+      const { data } = await axiosInstance.get(`/api/lectures/${"676cc96539a994da77bac09b"}`);
       setLectures(data.lectures);
       setLoading(false);
       

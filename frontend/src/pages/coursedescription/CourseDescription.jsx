@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./coursedescription.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { CourseData } from "../../context/CourseContext";
-import { server } from "../../main";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { UserData } from "../../context/UserContext";
 import Loading from "../../components/loading/Loading";
+import axiosInstance from "@/api/axiosInstance";
 
 const CourseDescription = ({ user }) => {
   const params = useParams();
@@ -28,8 +28,8 @@ const CourseDescription = ({ user }) => {
 
     const {
       data: { order },
-    } = await axios.post(
-      `${server}/api/course/checkout/${params.id}`,
+    } = await axiosInstance.post(
+      `/api/course/checkout/${params.id}`,
       {},
       {
         headers: {
@@ -51,8 +51,8 @@ const CourseDescription = ({ user }) => {
           response;
 
         try {
-          const { data } = await axios.post(
-            `${server}/api/verification/${params.id}`,
+          const { data } = await axiosInstance.post(
+            `/api/verification/${params.id}`,
             {
               razorpay_order_id,
               razorpay_payment_id,
@@ -95,7 +95,7 @@ const CourseDescription = ({ user }) => {
             <div className="course-description">
               <div className="course-header">
                 <img
-                  src={`${server}/${course.image}`}
+                  src={`${import.meta.env.VITE_API_END_POINT}/${course.image}`}
                   alt=""
                   className="course-image"
                 />

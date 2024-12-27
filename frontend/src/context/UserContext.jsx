@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { server } from "../main";
+import axiosInstance from "@/api/axiosInstance";
 import toast, { Toaster } from "react-hot-toast";
 
 const UserContext = createContext();
@@ -11,19 +11,18 @@ export const UserContextProvider = ({ children }) => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Tự động thêm token vào mọi yêu cầu API
-  axios.interceptors.request.use((config) => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
-  });
+  // axios.interceptors.request.use((config) => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     config.headers.Authorization = `Bearer ${token}`;
+  //   }
+  //   return config;
+  // });
 
   async function loginUser(email, password, navigate, fetchMyCourse) {
     setBtnLoading(true);
     try {
-      const { data } = await axios.post(`${server}/api/user/login`, {
+      const { data } = await axiosInstance.post(`/api/user/login`, {
         email,
         password,
       });
@@ -50,7 +49,7 @@ export const UserContextProvider = ({ children }) => {
   async function registerUser(name, email, password, navigate) {
     setBtnLoading(true);
     try {
-      const { data } = await axios.post(`${server}/api/user/register`, {
+      const { data } = await axiosInstance.post(`/api/user/register`, {
         name,
         email,
         password,
@@ -69,7 +68,7 @@ export const UserContextProvider = ({ children }) => {
     setBtnLoading(true);
     const activationToken = localStorage.getItem("activationToken");
     try {
-      const { data } = await axios.post(`${server}/api/user/verify`, {
+      const { data } = await axiosInstance.post(`/api/user/verify`, {
         otp,
         activationToken,
       });
@@ -86,7 +85,7 @@ export const UserContextProvider = ({ children }) => {
 
   async function fetchUser() {
     try {
-      const { data } = await axios.get(`${server}/api/user/me`, {
+      const { data } = await axiosInstance.get(`/api/user/me`, {
         headers: {
           token: localStorage.getItem('token'),
         },

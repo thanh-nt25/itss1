@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { server } from "../../main";
+import axiosInstance from "@/api/axiosInstance";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -12,11 +12,11 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Handle sending OTP
+  
   const handleSendOtp = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.post(`${server}/api/user/send-otp`, { email });
+      const { data } = await axiosInstance.post(`/api/user/send-otp`, { email });
       toast.success(data.message);
     } catch (error) {
       toast.error(error.response?.data?.message || "OTP送信に失敗しました。");
@@ -34,7 +34,7 @@ const Register = () => {
     }
     setLoading(true);
     try {
-      const { data } = await axios.post(`${server}/api/user/reset-password`, {
+      const { data } = await axiosInstance.post(`/api/user/reset-password`, {
         email,
         otp,
         newPassword,

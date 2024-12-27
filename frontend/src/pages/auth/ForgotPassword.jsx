@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { server } from "../../main";
+import axiosInstance from "@/api/axiosInstance";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const ForgotPassword = () => {
   const handleSendOtp = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.post(`${server}/api/user/send-otp`, { email });
+      const { data } = await axiosInstance.post(`/api/user/send-otp`, { email });
       toast.success(data.message);
     } catch (error) {
       toast.error(error.response?.data?.message || "OTP送信に失敗しました。");
@@ -34,7 +34,7 @@ const ForgotPassword = () => {
     }
     setLoading(true);
     try {
-      const { data } = await axios.post(`${server}/api/user/reset-password`, {
+      const { data } = await axiosInstance.post(`/api/user/reset-password`, {
         email,
         otp,
         newPassword,
@@ -203,7 +203,6 @@ export default ForgotPassword;
 // import { Link, useNavigate } from "react-router-dom";
 // import toast from "react-hot-toast";
 // import axios from "axios";
-// import { server } from "../../main";
 // import { UserData } from "../../context/UserContext";
 // import { CourseData } from "../../context/CourseContext";
 
@@ -216,7 +215,7 @@ export default ForgotPassword;
 //   //   e.preventDefault();
 //   //   setBtnLoading(true);
 //   //   try {
-//   //     const { data } = await axios.post(`${server}/api/user/forgot`, { email });
+//   //     const { data } = await axiosInstance.post(`/api/user/forgot`, { email });
 
 //   //     toast.success(data.message);
 //   //     navigate("/login");

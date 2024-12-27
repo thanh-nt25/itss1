@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { server } from "../../main";
+import axiosInstance from "@/api/axiosInstance";
 
 const ResetPassword = () => {
   const [password, setPassword] = useState("");
@@ -16,8 +16,8 @@ const ResetPassword = () => {
     e.preventDefault();
     setBtnLoading(true);
     try {
-      const { data } = await axios.post(
-        `${server}/api/user/reset?token=${params.token}`,
+      const { data } = await axiosInstance.post(
+        `/api/user/reset?token=${params.token}`,
         {
           password,
         }

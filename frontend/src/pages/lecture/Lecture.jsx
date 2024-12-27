@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 // import "./lecture.css";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import axios from "axios";
-import { server } from "../../main";
 import Loading from "../../components/loading/Loading";
 import toast from "react-hot-toast";
 import { TiTick } from "react-icons/ti";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import axiosInstance from "@/api/axiosInstance";
 
 const Lecture = ({ user }) => {
   const location = useLocation();
@@ -27,7 +27,7 @@ const Lecture = ({ user }) => {
 
   async function fetchLectures() {
     try {
-      const { data } = await axios.get(`${server}/api/lectures/${"676cc96539a994da77bac09b"}`);
+      const { data } = await axiosInstance.get(`/api/lectures/${"676cc96539a994da77bac09b"}`);
       setLectures(data.lectures);
       setLoading(false);
       // console.log(data.lectures.length);
@@ -119,7 +119,7 @@ const Lecture = ({ user }) => {
                       <iframe
                         width="100%"
                         height="600"
-                        src={lecture.video.startsWith("http") ? lecture.video : `${server}/${lecture.video}`}
+                        src={lecture.video.startsWith("http") ? lecture.video : `${import.meta.env.VITE_API_END_POINT}/${lecture.video}`}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen

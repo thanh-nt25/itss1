@@ -1,6 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
-import { server } from "../main";
+import axiosInstance from "@/api/axiosInstance";
 
 const CourseContext = createContext();
 
@@ -11,7 +11,7 @@ export const CourseContextProvider = ({ children }) => {
 
   async function fetchCourses() {
     try {
-      const { data } = await axios.get(`${server}/api/course/all`);
+      const { data } = await axiosInstance.get(`/api/course/all`);
 
       setCourses(data.courses);
     } catch (error) {
@@ -21,7 +21,7 @@ export const CourseContextProvider = ({ children }) => {
 
   async function fetchCourse(id) {
     try {
-      const { data } = await axios.get(`${server}/api/course/${id}`);
+      const { data } = await axiosInstance.get(`/api/course/${id}`);
       setCourse(data.course);
     } catch (error) {
       console.log(error);
@@ -30,7 +30,7 @@ export const CourseContextProvider = ({ children }) => {
 
   async function fetchMyCourse() {
     try {
-      const { data } = await axios.get(`${server}/api/mycourse`, {
+      const { data } = await axiosInstance.get(`/api/mycourse`, {
         headers: {
           token: localStorage.getItem("token"),
         },

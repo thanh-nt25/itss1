@@ -1,6 +1,5 @@
 import React from "react";
 import "./courseCard.css";
-import { server } from "../../main";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
@@ -8,6 +7,7 @@ import courseImageJapanese from "./japan-course.png";
 import courseImageCulture from "./Culture.jpg";
 import courseImageVietnamese from "./vietnamese.jpg";
 import { useLocation } from "react-router-dom";
+import axiosInstance from "@/api/axiosInstance";
 
 const CourseCard = ({ course }) => {
   const categoryImages = {
@@ -34,7 +34,7 @@ const CourseCard = ({ course }) => {
   const deleteHandler = async (id) => {
     if (confirm("Are you sure you want to delete this course")) {
       try {
-        const { data } = await axios.delete(`${server}/api/course/${id}`);
+        const { data } = await axiosInstance.delete(`/api/course/${id}`);
         toast.success(data.message);
       } catch (error) {
         toast.error(error.response.data.message);
