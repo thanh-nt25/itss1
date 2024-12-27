@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { UserContextProvider } from "./context/UserContext.jsx";
 import { CourseContextProvider } from "./context/CourseContext.jsx";
+import { RouterProvider } from "react-router-dom";
 
 export const sample_course_id = import.meta.env.VITE_API_END_POINT;
 
