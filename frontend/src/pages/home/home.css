@@ -1,0 +1,298 @@
+/* home.css */
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+.home {
+  background-color: #f5f5f5;
+  padding: 100px 0;
+  text-align: center;
+  max-height: max-content;
+
+  .home-content {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+
+      @media (max-width: 768px) {
+        font-size: 28px;
+      }
+    }
+
+    p {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 40px;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+
+    button {
+      padding: 12px 24px;
+    }
+  }
+}
+
+
+
+.courses {
+  padding: 20px 40px;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.courses h2 {
+  font-size: 32px;
+  color: #8a4baf;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.courses-layout {
+  display: flex;
+  gap: 20px; 
+}
+
+.filter-container {
+  flex: 0 0 25%; 
+  max-width: 200px; 
+  background: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: left;
+}
+
+.filter-container h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.checkbox-group label {
+  font-size: 14px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.clear-filter-btn {
+  margin-top: 20px;
+  padding: 10px;
+  border: none;
+  background-color: #8a4baf;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.clear-filter-btn:hover {
+  background-color: #723b8c;
+}
+
+/* Cấu trúc Grid cho container */
+.course-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 4 cột trên desktop */
+  gap: 20px;  /* Khoảng cách giữa các item */
+  margin-top: 20px;
+  width: 100%; /* Đảm bảo container chiếm toàn bộ chiều rộng */
+  padding: 0 10px;  /* Đảm bảo có khoảng cách bên trái/bên phải */
+}
+
+/* Chế độ responsive cho các màn hình nhỏ hơn */
+@media (max-width: 1024px) {
+  .course-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 cột trên tablet */
+  }
+}
+
+/* Điều chỉnh cho màn hình điện thoại */
+@media (max-width: 768px) {
+  .course-container {
+    grid-template-columns: 1fr;  /* 1 cột trên điện thoại */
+  }
+}
+
+.course-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box; /* Đảm bảo tính toán chiều rộng chính xác */
+  margin: 0; /* Loại bỏ margin có thể gây tràn */
+}
+
+.course-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.course-card h3 {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #333;
+}
+
+.course-card p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.course-card button {
+  background-color: #8a4baf;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.course-card button:hover {
+  background-color: #723b8c;
+}
+
+/* Thêm vào home.css hoặc một file CSS tương tự */
+.home {
+  background-color: #f5f5f5;
+  padding: 100px 0;
+  text-align: center;
+  height: 400px; /* Thiết lập chiều cao cho slider */
+  position: relative; /* Để đặt nội dung bên trong */
+}
+
+.slide-item {
+  position: relative;
+  height: 100%;  /* Chiếm toàn bộ chiều cao của slider */
+  display: flex;
+  justify-content: center; /* Căn giữa nội dung */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  padding: 20px;
+  background-color: #f5f5f5; /* Nền sáng cho mỗi slide */
+}
+
+/* Cấu hình lại slide-content để hiển thị nhiều chữ */
+.slide-content {
+  color: #ff0000;  /* Chữ màu tối để dễ đọc */
+  text-align: center;
+  z-index: 10;
+  max-width: 1800px; /* Giới hạn chiều rộng */
+  /* max-height: 1000px; */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Nền sáng cho văn bản */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.slide-content h2 {
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.slide-content p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #555; /* Màu chữ dễ đọc */
+  line-height: 1.6; /* Cải thiện khoảng cách dòng */
+}
+
+.slide-content button {
+  background-color: #8a4baf;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.slide-content button:hover {
+  background-color: #723b8c;
+}
+/* Slider Section */
+.slide-item {
+  background-color: #F9FAFB; /* Nền sáng */
+}
+
+.slide-content {
+  background-color: rgba(255, 255, 255, 0.9); /* Nền trắng mờ */
+  border: 1px solid #E2E8F0; /* Viền xám nhạt */
+}
+
+.slide-content h2 {
+  color: #4A5568; /* Màu xám đậm */
+}
+
+.slide-content p {
+  color: #718096; /* Màu xám trung bình */
+}
+
+.slide-content button {
+  background-color: #6B46C1; /* Tím */
+  color: white;
+}
+
+.slide-content button:hover {
+  background-color: #553C9A; /* Tím đậm hơn khi hover */
+}
+
+/* Course Section */
+.text-purple-700 {
+  color: #6B46C1; /* Tím cho tiêu đề */
+}
+
+.course-card {
+  background-color: white;
+  border: 1px solid #E2E8F0; /* Viền xám nhạt */
+}
+
+.course-card h3 {
+  color: #2D3748; /* Văn bản chính */
+}
+
+.course-card p {
+  color: #718096; /* Văn bản phụ */
+}
+
+.course-card button {
+  background-color: #3182CE; /* Xanh lam */
+  color: white;
+}
+
+.course-card button:hover {
+  background-color: #2B6CB0; /* Xanh lam đậm hơn khi hover */
+}
+
+/* Global Text Colors */
+.text-gray-500 {
+  color: #A0AEC0; /* Màu xám nhạt */
+}
+
+.text-gray-700 {
+  color: #4A5568; /* Màu xám trung bình */
+}

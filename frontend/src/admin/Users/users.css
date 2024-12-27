@@ -1,0 +1,176 @@
+/* General styles */
+.admin-users {
+  padding: 20px;
+  background-color: #fff;
+  width: 100vw;  /* Make sure the container takes full width of the screen */
+  box-sizing: border-box;  /* Include padding and borders in width */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;  /* Ensure the title takes full width */
+}
+
+/* Filter section */
+/* Filter Section */
+.filter-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Left section: Pagination info */
+.filter-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-left p {
+  margin: 0;
+  font-size: 16px;
+}
+
+.filter-left select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+/* Right section: Search and filter */
+.filter-right {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-right input,
+.filter-right select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.filter-right input:focus,
+.filter-right select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.add-user-btn {
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-user-btn:hover {
+  background-color: #218838;
+}
+
+/* User table */
+.user-table {
+  width: 100%;  /* Make the table take up full width of the container */
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-sizing: border-box;  /* Include borders in width */
+}
+
+.user-table th,
+.user-table td {
+  padding: 12px 15px;  /* Increase padding for better readability */
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.user-table th {
+  background-color: #f4f4f4;
+}
+
+.user-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;  /* Add alternate row colors */
+}
+
+.user-table tbody tr:hover {
+  background-color: #f1f1f1;  /* Add hover effect for rows */
+}
+
+/* Avatar column */
+.user-table td.avatar {
+  width: 60px;
+  text-align: center;
+}
+
+.user-table td.avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;  /* Make the image circular */
+}
+
+/* Status column */
+.user-table td.status {
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.user-table td.status.active {
+  background-color: #28a745;  /* Green for active */
+}
+
+.user-table td.status.inactive {
+  background-color: #dc3545;  /* Red for inactive */
+}
+
+/* View column */
+.user-table td.view {
+  text-align: center;
+}
+
+.user-table td.view button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.user-table td.view button:hover {
+  background-color: #0056b3;
+}
+
+/* Pagination */
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;  /* Ensure pagination is full-width */
+}
+
+.pagination button {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #0056b3;
+}
+
+.pagination button:hover {
+  background-color: #0056b3;
+}

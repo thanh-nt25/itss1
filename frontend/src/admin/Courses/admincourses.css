@@ -1,0 +1,141 @@
+.admin-courses {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.filter-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.filter-left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-right {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-right input,
+.filter-right select,
+.filter-left select {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.filter-right input:focus,
+.filter-right select:focus,
+.filter-left select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.course-table th,
+.course-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.course-table th {
+  background-color: #f4f4f4;
+}
+
+.course-table .status {
+  text-transform: capitalize;
+}
+
+.course-table .status.Active {
+  color: green;
+}
+
+.course-table .status.Inactive {
+  color: red;
+}
+
+.course-table .actions button {
+  padding: 6px 12px;
+  /* background-color: #007bff; */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.edit{
+  background-color: #0056b3;
+}
+
+.course-table .actions button:hover {
+  background-color: #0056b3;
+}
+
+.course-table .delete-btn {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.course-table .delete-btn:hover {
+  background-color: #c82333;
+}
+
+.pagination {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.pagination button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.add-user-btn {
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.add-user-btn:hover {
+  background-color: #218838;
+}
