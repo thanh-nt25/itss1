@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-const TestOverview = ({ test }) => {
-    console.log("test overview:", test);
+const PracticeOverview = ({ practice }) => {
+    console.log("practice overview:", practice);
     
   const navigate = useNavigate();
 
@@ -22,7 +22,7 @@ const TestOverview = ({ test }) => {
         <div className="bg-white p-6 rounded-lg shadow-md mb-8 ">
         <div className="flex flex-col justify-between h-[130px]">
             {/* Title */}
-            <h1 className="text-left text-3xl font-bold text-blue-800">{test.title}</h1>
+            <h1 className="text-left text-3xl font-bold text-blue-800">{practice.title}</h1>
 
             {/* Navigation Buttons */}
             <div className="flex justify-end mt-auto">
@@ -41,17 +41,17 @@ const TestOverview = ({ test }) => {
             <div className="flex justify-between items-start">
             {/* Left Section */}
             <div className="w-2/3 pr-4">
-                <h3 className="text-left text-xl font-semibold text-blue-700 mb-4">テスト説明:</h3>
-                <p className="text-left text-gray-800 leading-relaxed mb-6">{test.description}</p>
+                <h3 className="text-left text-xl font-semibold text-blue-700 mb-4">シナリオ説明:</h3>
+                <p className="text-left text-gray-800 leading-relaxed mb-6">{practice.description}</p>
                 <div className="bg-blue-50 p-4 rounded-lg shadow">
-                <h4 className="text-left text-lg font-semibold text-blue-700 mb-2">テスト詳細:</h4>
+                <h4 className="text-left text-lg font-semibold text-blue-700 mb-2">シナリオ詳細:</h4>
                 <ul className="list-disc list-inside text-left text-gray-700">
                     <li>
-                    <span className="font-bold">質問数:</span> {test.number_of_questions} 問
+                    <span className="font-bold">質問数:</span> {practice.number_of_questions} 問
                     </li>
                     <li>
                         <span className="font-bold">回答形式:</span> 
-                        <span className="font-bold text-red-500"> 単一選択, 複数選択</span>
+                        <span className="font-bold text-red-500"> エッセイの質問、ビデオ</span>
                     </li>
                     <li>
                     <span className="font-bold">時間:</span> 30 分
@@ -63,8 +63,8 @@ const TestOverview = ({ test }) => {
             {/* Right Section */}
             <div className="w-1/4">
                 <img
-                src={test.testImage}
-                alt={test.title}
+                src={practice.practiceImage}
+                alt={practice.title}
                 className="w-full h-auto rounded-lg shadow-md"
                 />
             </div>
@@ -77,7 +77,7 @@ const TestOverview = ({ test }) => {
   );
 };
 
-export default TestOverview;
+export default PracticeOverview;
 
 // Sử dụng component này với data test1 như sau:
 // <TestOverview test={test1} />

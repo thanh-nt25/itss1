@@ -9,48 +9,42 @@ const Courses = () => {
   const { courses } = CourseData();
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedLevels, setSelectedLevels] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const coursesPerPage = 10; // Set to 10 cards per page
 
-  // useEffect(() => {
-  //   setFilteredCourses(courses || []);
-  // }, [courses]);
-
+  // Cập nhật filteredCourses dựa trên searchTerm, category, và level
   useEffect(() => {
-    // Xử lý cả searchTerm và category
     const normalizedSearchTerm = searchTerm ? searchTerm.toLowerCase() : "";
-    console.log("serch term effect", searchTerm);
-    
+
     const filtered = courses.filter((course) => {
       const matchesSearch = course?.title?.toLowerCase().includes(normalizedSearchTerm);
       const matchesCategory =
         selectedCategories.length === 0 || selectedCategories.includes(course.category);
-      return matchesSearch && matchesCategory;
-    });
-    console.log("filtered", filtered);
-    
-    setFilteredCourses(filtered);
-  }, [searchTerm, selectedCategories, courses]);
+      const matchesLevel =
+        selectedLevels.length === 0 || selectedLevels.includes(course.level);
 
+      return matchesSearch && matchesCategory && matchesLevel;
+    });
+
+    setFilteredCourses(filtered);
+  }, [searchTerm, selectedCategories, selectedLevels, courses]);
+
+  // Xử lý thay đổi checkbox của category
   const handleCategoryChange = (e) => {
     const { value, checked } = e.target;
-
-    if (checked) {
-      setSelectedCategories((prev) => [...prev, value]);
-    } else {
-      setSelectedCategories((prev) => prev.filter((category) => category !== value));
-    }
+    setSelectedCategories((prev) =>
+      checked ? [...prev, value] : prev.filter((category) => category !== value)
+    );
   };
 
-  useEffect(() => {
-    if (selectedCategories.length === 0) {
-      setFilteredCourses(courses); 
-    } else {
-      setFilteredCourses(
-        courses.filter((course) => selectedCategories.includes(course.category))
-      );
-    }
-  }, [selectedCategories, courses]);
+  // Xử lý thay đổi checkbox của level
+  const handleLevelChange = (e) => {
+    const { value, checked } = e.target;
+    setSelectedLevels((prev) =>
+      checked ? [...prev, value] : prev.filter((level) => level !== value)
+    );
+  };
 
   // Pagination Logic
   const indexOfLastCourse = currentPage * coursesPerPage;
@@ -72,52 +66,62 @@ const Courses = () => {
             <label>
               <input
                 type="checkbox"
-                value="Japanese"
+                value="報告"
                 onChange={handleCategoryChange}
               />
-              日本語
+              報告
             </label>
             <label>
               <input
                 type="checkbox"
-                value="Culture"
+                value="連絡"
                 onChange={handleCategoryChange}
               />
-              文化
+              連絡
             </label>
             <label>
               <input
                 type="checkbox"
-                value="Vietnamese"
+                value="相談"
                 onChange={handleCategoryChange}
               />
-              ベトナム語
+              相談
             </label>
+            <label>
+              <input
+                type="checkbox"
+                value="日本文化"
+                onChange={handleCategoryChange}
+              />
+              日本文化
+            </label>
+          </div>
 
-            <h3>レベル</h3>
+          <h3 className="mt-3">レベル</h3>
+          <div className="checkbox-group">
             <label>
               <input
                 type="checkbox"
-                value="N3"
-                onChange={handleCategoryChange}
+                value="初級"
+                onChange={handleLevelChange}
               />
-              N3
+              初級
             </label>
             <label>
               <input
                 type="checkbox"
-                value="N2"
-                onChange={handleCategoryChange}
+                value="中級"
+                onChange={handleLevelChange}
               />
-              N2
+              中級
             </label>
             <label>
               <input
                 type="checkbox"
-                value="N1"
-                onChange={handleCategoryChange}
+                value="上級"
+                onChange={handleLevelChange}
               />
-              N1
+              上級
             </label>
           </div>
         </div>

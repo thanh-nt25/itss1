@@ -8,20 +8,17 @@ const Tabs = ({ isAuth, role }) => {
   const isAdmin = role === "admin";
   const firstTabPath = isAdmin ? "/admin/dashboard" : "/";
   const secondTabPath = isAdmin ? "/admin/course" : "/courses";
-  const thirdTabPath = isAdmin ? "/admin/users" : null; // Tab thứ ba chỉ dành cho admin
+  const thirdTabPath = isAdmin ? "/admin/users" : null;
   const firstTabLabel = isAdmin ? "ダッシュボード" : "ホーム";
   const secondTabLabel = isAdmin ? "コース" : "コース";
   const thirdTabLabel = isAdmin ? "ユーザー" : null;
 
-  // Trạng thái để kiểm soát điều hướng mặc định
   const [hasNavigated, setHasNavigated] = useState(false);
 
-  // Reset trạng thái khi đăng nhập lại hoặc role thay đổi
   useEffect(() => {
     setHasNavigated(false);
   }, [isAuth, role]);
 
-  // Điều hướng mặc định khi component được mount lần đầu
   useEffect(() => {
     if (
       isAuth &&
@@ -29,7 +26,7 @@ const Tabs = ({ isAuth, role }) => {
       ![firstTabPath, secondTabPath, thirdTabPath].includes(location.pathname)
     ) {
       navigate(firstTabPath);
-      setHasNavigated(true); // Đánh dấu đã điều hướng
+      setHasNavigated(true); 
     }
   }, [isAuth, hasNavigated, firstTabPath, secondTabPath, thirdTabPath, location.pathname, navigate]);
 
@@ -59,7 +56,7 @@ const Tabs = ({ isAuth, role }) => {
           >
             {secondTabLabel}
           </button>
-          {/* Tab 3: ユーザー (chỉ dành cho admin) */}
+          {/* Tab 3: ユーザー (admin) */}
           {isAdmin && thirdTabPath && (
             <button
               onClick={() => navigate(thirdTabPath)}

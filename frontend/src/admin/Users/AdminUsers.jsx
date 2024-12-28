@@ -152,10 +152,10 @@ const AdminUsers = () => {
               <td>{user.email}</td>
               <td>{user.role}</td>
               <td >
-                {user.status === "active" ? "Active" : "Inactive"}
+                {user.status === "アクティブ" ? "アクティブ" : "インアクティブ"}
               </td>
               <td className="view">
-                <button>View</button>
+                <button>表示</button>
               </td>
             </tr>
           ))}

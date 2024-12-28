@@ -14,15 +14,13 @@ const AdminCourses = ({ user }) => {
     console.log("isMenuOpen", isMenuOpen);
   };
 
-  // Mock data for courses (this would normally come from an API)
   const courses = [
-    { id: 1, name: "React for Beginners", level: "Beginner", participants: 120, status: "Active", category: "Web Development" },
-    { id: 2, name: "Advanced JavaScript", level: "Advanced", participants: 85, status: "Inactive", category: "Programming" },
-    { id: 3, name: "Python Fundamentals", level: "Beginner", participants: 200, status: "Active", category: "Data Science" },
-    { id: 4, name: "Full Stack Development", level: "Intermediate", participants: 150, status: "Inactive", category: "Web Development" },
-    { id: 5, name: "Machine Learning 101", level: "Advanced", participants: 180, status: "Active", category: "Data Science" },
-    { id: 6, name: "UI/UX Design Basics", level: "Beginner", participants: 100, status: "Active", category: "Design" },
-    // Add more mock courses as needed
+    { id: 1, name: "簡単な日本語報告スキル", level: "初級", participants: 120, status: "アクティブ", category: "報告" },
+    { id: 2, name: "簡単なベトナム語報告の基本", level: "上級", participants: 85, status: "インアクティブ", category: "連絡" },
+    { id: 3, name: "仕事で使うベトナム語報告", level: "中級", participants: 200, status: "アクティブ", category: "日本文化" },
+    { id: 4, name: "日越文化を比較する", level: "中級", participants: 150, status: "アクティブ", category: "相談" },
+    { id: 5, name: "ベトナム文化の深淵を探る", level: "初級", participants: 180, status: "インアクティブ", category: "連絡" },
+    { id: 6, name: "日越文化交流の歴史", level: "上級", participants: 100, status: "インアクティブ", category: "報告" },
   ];
 
   // Pagination states
@@ -67,9 +65,7 @@ const AdminCourses = ({ user }) => {
           <p>件</p>
         </div>
 
-        {/* Right side: Search and Filter */}
         <div className="filter-right">
-          {/* <FaFilter className="text-gray-700 text-2xl cursor-pointer hover:text-blue-500" /> */}
           <div className="flex w-[200px] max-w-sm">
             <div
               onClick={toggleMenu}
@@ -81,7 +77,6 @@ const AdminCourses = ({ user }) => {
               <FaFilter className="text-gray-700 text-2xl" />
             </div>
             
-            {/* <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" /> */}
             <input
               type="text"
               placeholder="コース名"
@@ -102,9 +97,10 @@ const AdminCourses = ({ user }) => {
             <select
               className="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
-              <option>メール</option>
-              <option>名前</option>
-              <option>年齢</option>
+              <option>報告</option>
+              <option>連絡</option>
+              <option>相談</option>
+              <option>日本文化</option>
             </select>
           </div>
           {/* Dòng 2 */}
@@ -165,16 +161,16 @@ const AdminCourses = ({ user }) => {
               <td>{course.level}</td>
               <td>{course.participants}</td>
               <td className={`status ${course.status}`}>
-                {course.status === "Active" ? "Active" : "Inactive"}
+                {course.status === "アクティブ" ? "アクティブ" : "インアクティブ"}
               </td>
               <td>{course.category}</td>
               <td className="actions">
-                <button className="edit"　onClick={hanleViewCourse}>View</button>
+                <button className="edit"　onClick={hanleViewCourse}>表示</button>
                 <button
                   className="delete-btn"
                   onClick={() => handleDeleteCourse(course.id)}
                 >
-                  Delete
+                  削除
                 </button>
               </td>
             </tr>

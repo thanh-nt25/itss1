@@ -86,6 +86,7 @@ const CourseStudy = ({ user }) => {
       title: "練習問題 4"
     },
   ]
+
   const chapters = [
     {
       id: 1,
@@ -96,6 +97,7 @@ const CourseStudy = ({ user }) => {
         "第2課: ひらがなとカタカナ",
         "第3課: 挨拶と基本フレーズ",
       ],
+      test: "テスト１:漢字"
     },
     {
       id: 2,
@@ -106,6 +108,7 @@ const CourseStudy = ({ user }) => {
         "第2課: 助詞の基本",
         "第3課: 日常会話の例",
       ],
+      test: "テスト２:文法"
     },
     {
       id: 3,
@@ -116,6 +119,7 @@ const CourseStudy = ({ user }) => {
         "第2課: 読解と作文の練習",
         "第3課: 試験対策",
       ],
+      test: "テスト３:リスニング"
     },
   ];
   
@@ -228,6 +232,17 @@ const CourseStudy = ({ user }) => {
                               </Link>
                             </div>
 
+                            {/* test */}
+                            <div className="flex">
+                              <Link
+                                to={`/course/${course._id}/tests`}
+                                className="m-2 w-full bg-red-200 text-black rounded hover:bg-red-300 flex items-center justify-between gap-2 py-2 p-2"
+                              >
+                                <span className="text-left">{chapter?.test}</span>
+                                <FontAwesomeIcon icon={faCheck} className="text-green-500 text-[20px]" />
+                              </Link>
+                            </div>
+
                           </div>
                         ) : 
                         openChapters[chapter.id] && (
@@ -265,6 +280,17 @@ const CourseStudy = ({ user }) => {
                                 <FontAwesomeIcon icon={faLock} className="text-green-500 text-[20px]" />
                               </Link>
                             </div>
+                            {/* test */}
+                            <div className="flex">
+                              <Link
+                                to={`/course/${course._id}/tests`}
+                                className="m-2 w-full bg-red-200 text-black rounded hover:bg-red-300 flex items-center justify-between gap-2 py-2 p-2"
+                              >
+                                <span className="text-left">{chapter?.test}</span>
+                                <FontAwesomeIcon icon={faLock} className="text-green-500 text-[20px]" />
+                              </Link>
+                            </div>
+
 
                           </div>
                         )
@@ -280,7 +306,7 @@ const CourseStudy = ({ user }) => {
                   exercises.map((exercise) => (
                     <div className="flex">
                       <Link
-                        to={`/course/${course._id}/tests`}
+                        to={`/course/${course._id}/practices`}
                         className="m-2 w-full bg-gray-200 text-black rounded hover:bg-gray-300 flex items-center justify-between gap-2 py-2 p-2"
                       >
                         <span className="text-left">{exercise.title}</span>
@@ -291,42 +317,11 @@ const CourseStudy = ({ user }) => {
                     
                   )
                 }
-                
-                {/* <div className="flex">
-                  <Link
-                    to="/next-page"
-                    className="m-2 w-full bg-gray-200 text-black rounded hover:bg-gray-300 flex items-center justify-between gap-2 py-2 p-2"
-                  >
-                    <span className="text-left">Lec 1</span>
-                    
-                  </Link>
-                </div>
-                <div className="flex">
-                  <Link
-                    to="/next-page"
-                    className="m-2 w-full bg-gray-200 text-black rounded hover:bg-gray-300 flex items-center justify-between gap-2 py-2 p-2"
-                  >
-                    <span className="text-left">Lec 1</span>
-                    
-                  </Link>
-                </div>
-                <div className="flex">
-                  <Link
-                    to="/next-page"
-                    className="m-2 w-full bg-gray-200 text-black rounded hover:bg-gray-300 flex items-center justify-between gap-2 py-2 p-2"
-                  >
-                    <span className="text-left">Lec 1</span>
-                    
-                  </Link>
-                </div> */}
-                
               </div>}
             </div>
         </div>
 
         {/* Section 2: Course Stats */}
-        
-
         <div className="h-[400px] w-[600px] p-4 bg-white shadow-lg rounded-lg flex flex-col gap-4">
           <div className="w-full bg-yellow-200 rounded-lg overflow-hidden flex justify-center items-center">
             <img
@@ -346,8 +341,6 @@ const CourseStudy = ({ user }) => {
           </button>
         </div>
         {/* </div> */}
-
-        
       </div>
 
     </div>

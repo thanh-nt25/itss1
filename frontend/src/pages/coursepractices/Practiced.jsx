@@ -6,16 +6,16 @@ import Loading from "../../components/loading/Loading";
 import toast from "react-hot-toast";
 import { TiTick } from "react-icons/ti";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import TestOverview from "../../components/testoverview/TestOverview"
-import DoTest from "../../components/testoverview/DoTest"
-import TestResult from "../../components/testoverview/TestResult"
-import ReviewTest from "../../components/testoverview/ReviewTest"
+import PracticeOverview from "../../components/practiceoverview/PracticeOverview"
+import DoPractice from "../../components/practiceoverview/DoPractice"
+import PracticeResult from "../../components/practiceoverview/PracticeResult"
+import ReviewPractice from "../../components/practiceoverview/ReviewPractice"
 import axiosInstance from "@/api/axiosInstance";
 import { sample_course_id } from "@/main"
-import { testSet } from "@/pages/coursetests/CourseTests"
+import { practiceSet } from "@/pages/coursepractices/CoursePractices"
 
 
-const Tested = () => {
+const Practiced = () => {
   const location = useLocation();
   // const navigate = useNavigate();
   const isAdminRoute = location.pathname.startsWith("/admin");
@@ -50,8 +50,8 @@ const Tested = () => {
     }
   }
 
-  const handleEndTest = () => {
-    toast.success("Test finished!");
+  const handleEndPractice = () => {
+    toast.success("Practice finished!");
     setIsEnd(true);
     setIsStart(false);
   }
@@ -60,7 +60,7 @@ const Tested = () => {
         setIsReview(true);
     }  
 
-  const handleStartTest = () => {
+  const handleStartPractice = () => {
     setIsStart(true);
   }
 
@@ -85,10 +85,10 @@ const Tested = () => {
     <div className="">
       {
         loading ? (<Loading />) :(
-          isEnd ? <TestResult/> :
+          isEnd ? <PracticeResult/> :
         <>
           {
-            isReview ? <ReviewTest test = {testSet.test1}/> : <TestOverview test = {testSet.test1}/> 
+            isReview ? <ReviewPractice practice = {practiceSet.practice1}/> : <PracticeOverview practice = {practiceSet.practice1}/> 
           }
           <div className="flex justify-center mt-10">
           {isReview ? (
@@ -114,5 +114,5 @@ const Tested = () => {
     </div>
   )}
 
-export default Tested;
+export default Practiced;
 {/* <TestOverview test = {test1}/> */}

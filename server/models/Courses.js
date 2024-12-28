@@ -14,10 +14,11 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  price: {
-    type: Number,
-    required: true,
+  level: {
+    type: String,
+    required: false,
   },
+
   duration: {
     type: Number,
     required: true,

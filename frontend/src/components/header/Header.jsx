@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import "./header.css";
-import { Link, useNavigate, useLocation  } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaBell, FaChevronDown } from "react-icons/fa"; 
 import toast from "react-hot-toast"
 import { useSearch } from "@/context/SearchContext";
+import NotificationCard from "@/components/notificationcard/NotificationCard"
 
 const Header = ({ isAuth, user, handleLogout }) => {
   const { searchTerm, setSearchTerm } = useSearch();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -25,10 +27,18 @@ const Header = ({ isAuth, user, handleLogout }) => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+    console.log("bell open", isMenuOpen);
+  };
+
+  // Reset isMenuOpen when user role changes or logs out
+  React.useEffect(() => {
+    setIsMenuOpen(false);
+  }, [user]);
+
   return (
     <header>
-      
-      
       {
         user?.role === "user" || !isAuth ?
         <Link to="/" className="logo">
@@ -39,7 +49,6 @@ const Header = ({ isAuth, user, handleLogout }) => {
           HouRenShuu
         </Link>
       }
-      
 
       {/* Search Bar */}
       <div className="search-bar">
@@ -59,14 +68,11 @@ const Header = ({ isAuth, user, handleLogout }) => {
 
       {/* Navigation Links */}
       <div className="link">
-        {/* <Link to={"/courses"}>コース</Link> */}
-        
         {isAuth ? (
           <div className="relative">
-            {/* Tên người dùng (Dropdown Trigger) */}
             <div className="flex items-center gap-4">
+              <NotificationCard isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} role={user?.role}/>
 
-              <FaBell className="text-[30px] text-gray-600 cursor-pointer hover:text-blue-500" />
               <img
                 src="https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o="
                 alt="Avatar"
@@ -84,18 +90,18 @@ const Header = ({ isAuth, user, handleLogout }) => {
               />
             </div>
 
-            {isDropdownOpen && (
+            {isDropdownOpen && 
+            (
               <div className="dropdown-menu">
-
                 <Link to="/account" className="dropdown-item w-full flex items-center justify-center" onClick={toggleDropdown}>
                   アカウント
                 </Link>
                 <button
-                  className="dropdown-item w-full"
-                  onClick={() => {
+                  className="text-left dropdown-item w-full"
+                  onClick={async  () => {
                     toggleDropdown();
-                    handleLogout(); // Gọi hàm đăng xuất
-                    navigate("/login");
+                    await  handleLogout();
+                    // navigate("/login", { replace: true });
                   }}
                 >
                   ログアウト

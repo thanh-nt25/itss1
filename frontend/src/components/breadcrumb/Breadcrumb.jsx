@@ -12,7 +12,6 @@ const Breadcrumb = () => {
   const pathnames = location.pathname.split("/").filter((x) => x);
 
   const courseId = pathnames.find((segment, index) => pathnames[index - 1] === "course");
-  // console.log(courseId);
   
   const routeMap = {
     admin: "ホーム", 
@@ -22,44 +21,15 @@ const Breadcrumb = () => {
     "course-details": "コース名",
     "add-exercises": "問題追加",
     "add-documents": "資料追加",
-    // courseId: "コース名",
     "tests": "テスト名",
     "tested": "テスト名",
-    // sample_course_id: "コース名"
+    "practices":"シナリオ練習",
+    "practiced":"シナリオ練習",
   };
 
   if (pathnames.length < 3) {
     return null;
   }
-
-  // useEffect(() => {
-  //   // Tìm Course ID từ đường dẫn (phần tử sau "course")
-  //   const courseId = pathnames.find((segment, index) => pathnames[index - 1] === "course");
-  //   if (!courseId) {
-  //     console.log("ko detect dc id");
-      
-  //     return;
-  //   }
-    
-  //     setIsLoading(true); // Bắt đầu trạng thái loading
-  //     axiosInstance
-  //       .get(`/course/${courseId}`) // Gọi API bằng axiosInstance
-  //       .then((response) => {
-  //         const data = response.data;
-  //         if (data?.title) {
-  //           setCourseName(data.title); // Lưu コース名 vào state
-  //         } else {
-  //           setCourseName("コース名");
-  //         }
-  //       })
-  //       .catch(() => {
-  //         setCourseName("コース名"); // Xử lý lỗi
-  //       })
-  //       .finally(() => {
-  //         setIsLoading(false); // Kết thúc trạng thái loading
-  //       });
-    
-  // }, [pathnames]);
 
   return (
     <nav className="flex items-center space-x-2 text-sm text-gray-600 ml-2 mt-2">
@@ -71,16 +41,11 @@ const Breadcrumb = () => {
           value === courseId
             ? "コース名"
             : routeMap[value] || decodeURIComponent(value);
-        // const displayValue =
-        //   value === sample_course_id
-        //     ? "コース名"
-        //     : routeMap[value] || decodeURIComponent(value);
 
         return (
           <React.Fragment key={to}>
             {index > 0 && <span className="text-gray-400">/</span>}
             {isLast ? (
-              // <span>{routeMap[value] || decodeURIComponent(value)}</span>
               <span>{displayValue}</span>
             ) : (
               <Link to={to} className="text-blue-500 hover:underline">

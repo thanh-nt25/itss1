@@ -26,6 +26,8 @@ import Dashbord from "./pages/dashbord/Dashbord";
 import CourseStudy from "./pages/coursestudy/CourseStudy";
 import CourseTests from "./pages/coursetests/CourseTests";
 import Tested from "./pages/coursetests/Tested";
+import CoursePractices from "./pages/coursepractices/CoursePractices";
+import Practiced from "./pages/coursepractices/Practiced";
 import Lecture from "./pages/lecture/Lecture";
 import AdminDashbord from "./admin/Dashboard/AdminDashbord";
 import AdminCourses from "./admin/Courses/AdminCourses";
@@ -94,6 +96,17 @@ const App = () => {
           path={`/course/${sample_course_id}/tested`}
           element={isAuth ? <Tested user={user} /> : <Login />}
         />
+
+        <Route
+          path="/course/:id/practices"
+          element={isAuth ? <CoursePractices user={user} /> : <Login />}
+        />
+
+        <Route
+          path={`/course/${sample_course_id}/practiced`}
+          element={isAuth ? <Practiced user={user} /> : <Login />}
+        />
+        
   
         <Route
           path="/lectures/:id"

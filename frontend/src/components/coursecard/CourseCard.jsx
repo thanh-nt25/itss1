@@ -57,7 +57,6 @@ const CourseCard = ({ course }) => {
       
       <p  className="text-left">講師: {course.createdBy}</p>
       <p  className="text-left">間隔: {course.duration} 週間</p>
-      <p  className="text-left">価格: {course.price}</p>
 
       
       {
