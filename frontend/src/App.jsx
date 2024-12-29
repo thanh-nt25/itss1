@@ -48,10 +48,10 @@ const App = () => {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={isAuth ? <RootLayout/> : <Login/>}>
-        <Route path="/" element={<Home />} 
+      <Route path="/" element={<RootLayout/>}>
+        <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/courses" element={ isAuth ?  <Courses />}  : <Login/>/>
+        <Route path="/courses" element={ isAuth ?  <Courses /> : <Login/>}  />
         <Route
           path="/account"
           element={isAuth ? <Account user={user} /> : <Login />}
