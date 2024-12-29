@@ -11,7 +11,7 @@ const Verify = () => {
   const navigate = useNavigate();
 
   function onChange(value) {
-    console.log("Captcha value:", value);
+    // console.log("Captcha value:", value);
     setShow(true);
   }
 

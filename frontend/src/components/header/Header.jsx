@@ -14,7 +14,7 @@ const Header = ({ isAuth, user, handleLogout }) => {
   const location = useLocation();
 
   const handleSearch = () => {
-    console.log("Search term in header:", searchTerm);
+    // console.log("Search term in header:", searchTerm);
 
     if (location.pathname !== "/courses") {
       toast.error("コースページで検索してください");

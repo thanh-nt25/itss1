@@ -22,7 +22,7 @@ const AddExercises = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+    // console.log("Form Data Submitted:", formData);
     alert("質問が追加されました！");
     // Xử lý logic gửi dữ liệu ở đây
   };

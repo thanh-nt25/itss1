@@ -11,7 +11,7 @@ const AdminCourses = ({ user }) => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    console.log("isMenuOpen", isMenuOpen);
+    // console.log("isMenuOpen", isMenuOpen);
   };
 
   const courses = [

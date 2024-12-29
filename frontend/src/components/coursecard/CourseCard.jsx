@@ -3,34 +3,26 @@ import "./courseCard.css";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-import courseImageJapanese from "./japan-course.png";
-import courseImageCulture from "./Culture.jpg";
-import courseImageVietnamese from "./vietnamese.jpg";
+import courseImageDefault from "./Culture.jpg";
 import { useLocation } from "react-router-dom";
 import axiosInstance from "@/api/axiosInstance";
 import { sample_course_id } from "@/main"
 
 const CourseCard = ({ course }) => {
   const categoryImages = {
-    "Japanese": courseImageJapanese,
-    "Culture": courseImageCulture,
-    "Vietnamese": courseImageVietnamese,
-    "Default": courseImageJapanese, 
+    "Default": courseImageDefault, 
   };
 
-  // Checking if we are in the Admin route
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith("/admin");
 
   const navigate = useNavigate();
 
-  // Simulating user's progress for each course (static data)
-  const completedLessons = course.completedLessons || 0;  // Static number of completed lessons
-  const totalLessons = course.totalLessons || 0;  // Total lessons in the course
-  const progress = totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0;  // Calculate progress
+  const completedLessons = course.completedLessons || 0; 
+  const totalLessons = course.totalLessons || 0;  
+  const progress = totalLessons > 0 ? (completedLessons / totalLessons) * 100 : 0;
 
-  // Simulate whether the user has subscribed or studied the course
-  const isSubscribed = true;  // Simulate subscription status (for demo purposes)
+  const isSubscribed = true; 
 
   const deleteHandler = async (id) => {
     if (confirm("Are you sure you want to delete this course")) {
@@ -43,13 +35,12 @@ const CourseCard = ({ course }) => {
     }
   };
 
-  // Status - Studied or Not Studied
   const isStudied = isSubscribed ? "Studied" : "Not Studied"; 
 
   return (
     <div className="course-card">
       <img
-        src={categoryImages[course.category] || categoryImages["Default"]}
+        src={course.image ||　categoryImages[course.category] || categoryImages["Default"]}
         alt={course.category}
         className="course-image"
       />

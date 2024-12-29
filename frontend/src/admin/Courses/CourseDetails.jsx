@@ -21,7 +21,7 @@ const AdminCoursesDetails = () => {
   const [openChapters, setOpenChapters] = useState({}); // Track opened/closed chapters
 
   const toggleChapter = (chapterId) => {
-    console.log(chapterId);
+    // console.log(chapterId);
     
     setOpenChapters((prev) => ({
       ...prev,
@@ -82,13 +82,13 @@ const AdminCoursesDetails = () => {
   };
 
   const handleSave = () => {
-    console.log("Saving course details...", { courseName, category, content, level, status });
+    // console.log("Saving course details...", { courseName, category, content, level, status });
     toast.success("Saved course");
     navigate("/admin/course");
   };
 
   const handleCancel = () => {
-    console.log("Cancel editing...");
+    // console.log("Cancel editing...");
     toast.error("Cancelled");
     navigate("/admin/course");
   };

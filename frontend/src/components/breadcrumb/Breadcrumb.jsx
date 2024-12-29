@@ -4,7 +4,7 @@ import { sample_course_id } from "@/main"
 import axiosInstance from "@/api/axiosInstance";
 
 const Breadcrumb = () => {
-  console.log("sample_course_id", sample_course_id);
+  // console.log("sample_course_id", sample_course_id);
   
   const location = useLocation();
   const [courseName, setCourseName] = useState("");

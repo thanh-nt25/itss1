@@ -85,7 +85,7 @@ const Lecture = ({ user }) => {
                       <div className="flex h-[150px] w-full justify-between items-center">
                         <div className="relative w-full h-full">
                           <h1 className="absolute top-0 left-0 text-left text-xl font-bold m-4 text-gray-900">
-                            Lecture {lectures.findIndex((lec) => lec._id === lecture._id) + 1}: {lecture.title}
+                            第{lectures.findIndex((lec) => lec._id === lecture._id) + 1}課: {lecture.title}
                           </h1>
                         </div>
                         <div className="flex justify-between mt-10">
@@ -129,7 +129,7 @@ const Lecture = ({ user }) => {
 
                       <div className="flex justify-start w-full">
                         <h3 className="text-left text-gray-600 w-full pl-4">
-                          Description: {lecture.description}
+                          説明: {lecture.description}
                         </h3>
                       </div>
                     </>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 const PracticeOverview = ({ practice }) => {
-    console.log("practice overview:", practice);
+    // console.log("practice overview:", practice);
     
   const navigate = useNavigate();
 

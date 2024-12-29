@@ -9,7 +9,7 @@ const AdminUsers = () => {
     
     
     setIsMenuOpen(!isMenuOpen);
-    console.log("isMenuOpen", isMenuOpen);
+    // console.log("isMenuOpen", isMenuOpen);
   };
   // Mock data for users (this would normally come from an API)
   const users = [

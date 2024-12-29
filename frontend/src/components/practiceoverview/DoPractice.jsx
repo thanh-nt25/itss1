@@ -31,9 +31,9 @@ const Dopractice = ({ practice, isStarted }) => {
   const handleSaveAnswer = () => {
     const currentAnswer = answers[currentQuestion];
     if (currentAnswer) {
-      console.log(`Answer saved for question ${currentQuestion}`);
+      // console.log(`Answer saved for question ${currentQuestion}`);
     } else {
-      console.log("Please provide an answer");
+      // console.log("Please provide an answer");
     }
   };
 

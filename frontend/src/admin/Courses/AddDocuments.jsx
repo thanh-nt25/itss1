@@ -25,7 +25,7 @@ const AddDocuments = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form Data Submitted:", formData);
+    // console.log("Form Data Submitted:", formData);
     alert("資料が追加されました！");
 
   };
