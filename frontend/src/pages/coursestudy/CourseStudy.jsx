@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { CourseData } from "../../context/CourseContext";
-import courseImageJapanese from "./assets/japan-course.png";
 import courseImageCulture from "./assets/Culture.jpg";
-import courseImageVietnamese from "./assets/vietnamese.jpg";
 import axios from "axios";
-// import { CalendarIcon } from "@heroicons/react/outline";
-// import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt, faCheck, faLock } from "@fortawesome/free-solid-svg-icons";
 import {Button} from "@mui/material";
@@ -58,10 +54,7 @@ const CourseStudy = ({ user }) => {
   // if (user && user.role !== "admin" && !user.subscription.includes(params.id)) return navigate("/");
 
   const categoryImages = {
-    Japanese: courseImageJapanese,
-    Culture: courseImageCulture,
-    Vietnamese: courseImageVietnamese,
-    Default: courseImageJapanese,
+    Default: courseImageCulture,
   };
 
   const [openChapters, setOpenChapters] = useState({}); // Track opened/closed chapters
@@ -325,7 +318,7 @@ const CourseStudy = ({ user }) => {
         <div className="h-[400px] w-[600px] p-4 bg-white shadow-lg rounded-lg flex flex-col gap-4">
           <div className="w-full bg-yellow-200 rounded-lg overflow-hidden flex justify-center items-center">
             <img
-              src={categoryImages[course.category] || categoryImages["Default"]}
+              src={course.image || categoryImages["Default"]}
               alt="Thumbnail"
               className="object-cover w-full h-full"
             />
